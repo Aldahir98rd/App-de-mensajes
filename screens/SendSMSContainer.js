@@ -34,6 +34,20 @@ class SendSMSContainer extends Component {
     );
   };
 
+  automatico = () => {
+    console.log('Envar mensaje');
+    SmsAndroid.autoSend(
+      '5580038088',
+      'Prueba de mensaje',
+      fail => {
+        console.log('Failed with this error: ' + fail);
+      },
+      success => {
+        console.log('SMS sent successfully');
+      },
+    );
+  };
+
   // Function to read particular message from inbox with id
   getSMS = () => {
     let filter = {
@@ -42,7 +56,7 @@ class SendSMSContainer extends Component {
       read: 0, // 0 for unread SMS, 1 for SMS already read
       //<_id: 1234, // specify the msg id
       //   address: '+917691008701', // sender's phone number
-      address: '+525537512654',
+      address: '5580038088',
       // the next 2 filters can be used for pagination
       indexFrom: 0, // start from index 0
       maxCount: 10, // count of SMS to return each time
@@ -56,7 +70,7 @@ class SendSMSContainer extends Component {
         console.log('Count: ', count);
         console.log('List: ', smsList);
         var arr = JSON.parse(smsList);
-        const filterMsg = arr.filter(msg => msg.address === '+525537512654');
+        const filterMsg = arr.filter(msg => msg.address === '5580038088');
 
         // arr.forEach(function (object) {
         //   console.log('Object: ' + object);
@@ -67,7 +81,7 @@ class SendSMSContainer extends Component {
         filterMsg.map(msg => {
           alert(msg.body);
         });
-        console.log(arr.filter(msg => msg.address === '+525537512654'));
+        console.log(arr.filter(msg => msg.address === '5580038088'));
       },
     );
   };
@@ -92,6 +106,7 @@ class SendSMSContainer extends Component {
         sendSMS={this.sendSMS}
         getSMS={this.getSMS}
         deleteSMS={this.deleteSMS}
+        automatico={this.automatico}
       />
     );
   }

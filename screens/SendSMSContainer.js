@@ -18,7 +18,7 @@ class SendSMSContainer extends Component {
     SendSMS.send(
       {
         body: 'Enviando mesnaje......',
-        recipients: ['9928872286', '7014859919'],
+        recipients: ['5580038088'],
         successTypes: ['sent', 'queued'],
         allowAndroidSendWithoutReadPermission: true,
       },

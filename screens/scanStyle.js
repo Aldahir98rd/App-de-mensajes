@@ -25,7 +25,7 @@ const styles = {
   },
   cardView: {
     width: deviceWidth - 32,
-    height: deviceHeight / 4.5,
+    height: deviceHeight / 3,
     alignSelf: 'center',
     justifyContent: 'flex-start',
     alignItems: 'center',

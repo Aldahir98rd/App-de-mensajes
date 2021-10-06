@@ -12,33 +12,61 @@ class SendSMSContainer extends Component {
   }
 
   // Function to send message
-  sendSMS = () => {
-    console.log('sendSMS');
-    // alert('clicked');
-    SendSMS.send(
-      {
-        body: 'Enviando mesnaje......',
-        recipients: ['5580038088'],
-        successTypes: ['sent', 'queued'],
-        allowAndroidSendWithoutReadPermission: true,
+  // sendSMS = () => {
+  //   console.log('sendSMS');
+  //   // alert('clicked');
+  //   SendSMS.send(
+  //     {
+  //       body: 'Enviando mesnaje......',
+  //       recipients: ['5580038088'],
+  //       successTypes: ['sent', 'queued'],
+  //       allowAndroidSendWithoutReadPermission: true,
+  //     },
+  //     (completed, cancelled, error) => {
+  //       if (completed) {
+  //         console.log('SMS Sent Completed');
+  //       } else if (cancelled) {
+  //         console.log('SMS Sent Cancelled');
+  //       } else if (error) {
+  //         console.log('Some error occured');
+  //       }
+  //     },
+  //   );
+  // };
+
+  encendido = () => {
+    // console.log('Envar mensaje');
+    SmsAndroid.autoSend(
+      '5580038088',
+      '1',
+      fail => {
+        console.log('Failed with this error: ' + fail);
       },
-      (completed, cancelled, error) => {
-        if (completed) {
-          console.log('SMS Sent Completed');
-        } else if (cancelled) {
-          console.log('SMS Sent Cancelled');
-        } else if (error) {
-          console.log('Some error occured');
-        }
+      success => {
+        console.log('SMS sent successfully');
       },
     );
   };
 
-  automatico = () => {
+  apagar = () => {
     // console.log('Envar mensaje');
     SmsAndroid.autoSend(
       '5580038088',
-      'Prueba de mensaje',
+      '0',
+      fail => {
+        console.log('Failed with this error: ' + fail);
+      },
+      success => {
+        console.log('SMS sent successfully');
+      },
+    );
+  };
+
+  acuse = () => {
+    // console.log('Envar mensaje');
+    SmsAndroid.autoSend(
+      '5580038088',
+      '2',
       fail => {
         console.log('Failed with this error: ' + fail);
       },
@@ -106,7 +134,9 @@ class SendSMSContainer extends Component {
         sendSMS={this.sendSMS}
         getSMS={this.getSMS}
         deleteSMS={this.deleteSMS}
-        automatico={this.automatico}
+        encendido={this.encendido}
+        apagar={this.apagar}
+        acuse={this.acuse}
       />
     );
   }

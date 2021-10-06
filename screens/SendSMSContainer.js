@@ -35,7 +35,7 @@ class SendSMSContainer extends Component {
   };
 
   automatico = () => {
-    console.log('Envar mensaje');
+    // console.log('Envar mensaje');
     SmsAndroid.autoSend(
       '5580038088',
       'Prueba de mensaje',
